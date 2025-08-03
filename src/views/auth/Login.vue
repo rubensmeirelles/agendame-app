@@ -2,6 +2,14 @@
   import Logo from '@/layouts/full/logo/Logo.vue';
   /* Login form */
   import LoginForm from '@/components/auth/LoginForm.vue';
+  import axios from 'axios';
+
+  axios.defaults.withCredentials = true;
+  axios.defaults.withXSRFToken = true;
+  axios.get('https://agendame-api.test/sanctum/csrf-cookie')
+    .then(() => {
+      axios.post('https://agendame-api.test/api/login')
+    })
 </script>
 <template>
   <div class="authentication">
